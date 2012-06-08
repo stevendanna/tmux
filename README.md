@@ -1,15 +1,17 @@
-DESCRIPTION
-===========
+[![Build Status](https://secure.travis-ci.org/opscode-cookbooks/tmux.png?branch=master)](http://travis-ci.org/opscode-cookbooks/tmux)
+
+tmux
+====
 
 Installs tmux, a terminal multiplexer.
 
-REQUIREMENTS
-============
+Requirements
+------------
 
 Platform with a package named 'tmux'.
 
-LICENSE AND AUTHOR
-==================
+License and Author
+------------------
 
 Author:: Joshua Timberman (<joshua@opscode.com>)
 
