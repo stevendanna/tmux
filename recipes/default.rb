@@ -16,10 +16,32 @@
 # See the License for the specific language governing permissions and
 #
 
-package 'tmux' do
-  action :install
+if node[:platform] == 'centos'
+  Chef::Log.info('There is not a tmux package for CentOS. Compiling from source...')
+  package 'libevent-devel'
+  package 'ncurses-devel'
+
+  tar_name = "tmux-#{node[:tmux][:version]}"
+  remote_file "#{Chef::Config[:file_cache_path]}/#{tar_name}.tar.gz" do
+    source "http://downloads.sourceforge.net/tmux/#{tar_name}.tar.gz"
+    checksum node[:tmux][:checksum]
+    notifies :run, 'bash[install_tmux]', :immediately
+  end
+
+  bash 'install_tmux' do
+    user 'root'
+    cwd Chef::Config[:file_cache_path]
+    code <<-EOH
+      tar -zxf #{tar_name}.tar.gz
+      (cd #{tar_name} && ./configure && make && make install)
+    EOH
+    action :nothing
+  end
+else
+  package 'tmux'
 end
 
 template '/etc/tmux.conf' do
   source 'tmux.conf'
+  mode 0644
 end
