@@ -1,0 +1,6 @@
+cookbook "tmux" do
+  configuration("default") { runtimes [] }
+  configuration("source") { runtimes [] }
+  exclude :platform => 'ubuntu', :configuration => 'source'
+  runtimes []
+end
