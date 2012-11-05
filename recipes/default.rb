@@ -16,10 +16,11 @@
 # See the License for the specific language governing permissions and
 #
 
-if node['platform_family'] == "rhel"
+case node['tmux']['install_method']
+when 'source'
   include_recipe "tmux::source"
 else
-  package 'tmux'
+  include_recipe "tmux::package"
 end
 
 template '/etc/tmux.conf' do
