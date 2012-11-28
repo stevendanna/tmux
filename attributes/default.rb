@@ -4,4 +4,4 @@ else
   'package'
 end
 default['tmux']['version'] = '1.6'
-default['tmux']['checksum'] = '8756f6bcecb18102b87e5d6f5952ba2541f68ed3'
+default['tmux']['checksum'] = 'faee08ba1bd8c22537cd5b7458881d1bdb4985df88ed6bc5967c56881a7efbd6'
