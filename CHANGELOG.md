@@ -1,3 +1,12 @@
+## v1.2.2:
+
+The repository didn't have pushed commits, and so the following
+changes from earlier-than-latest versions wouldn't be available on the
+community site. We're releasing 1.2.2 to correct this.
+
+* [COOK-1841] - recipe downloads tmux tar everytime, even if its
+  installed
+
 ## v1.2.0:
 
 * [COOK-1649] - Typo in tmux default attributes
