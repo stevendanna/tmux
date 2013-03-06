@@ -42,7 +42,6 @@ default['tmux']['session_opts']['mouse-select-window'] = 'off'
 default['tmux']['session_opts']['mouse-utf8'] = 'on'
 default['tmux']['session_opts']['pane-active-border-bg'] = 'default'
 default['tmux']['session_opts']['pane-active-border-fg'] = 'green'
-default['tmux']['session_opts']['pane-base-index'] = 1
 default['tmux']['session_opts']['prefix'] = 'C-a'
 default['tmux']['session_opts']['repeat-time'] = 500
 default['tmux']['session_opts']['set-remain-on-exit'] = 'off'
@@ -73,4 +72,6 @@ default['tmux']['session_opts']['visual-bell'] = 'off'
 default['tmux']['session_opts']['visual-content'] = 'off'
 default['tmux']['session_opts']['visual-silence'] = 'off'
 default['tmux']['session_opts']['word-separators'] = '" -_@"'
+
+default['tmux']['window_opts']['pane-base-index'] = 1
 

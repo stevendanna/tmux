@@ -26,3 +26,10 @@ set -g <%= opt %> <%= val %>
   <% end %>
 <% end %>
 
+# Generate window options
+<% @window_opts.each_pair do |opt, val| %>
+  <% unless val.nil? %>
+setw -g <%= opt %> <%= val %>
+  <% end %>
+<% end %>
+
