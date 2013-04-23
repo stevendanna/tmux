@@ -25,5 +25,9 @@ end
 
 template '/etc/tmux.conf' do
   source 'tmux.conf.erb'
-  mode 0644
+  mode 00644
+  variables(
+    :server_opts => node['tmux']['server_opts'].to_hash,
+    :session_opts => node['tmux']['session_opts'].to_hash,
+    :window_opts => node['tmux']['window_opts'].to_hash )
 end
