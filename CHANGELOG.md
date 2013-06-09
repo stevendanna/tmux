@@ -1,3 +1,9 @@
+## v1.3.0:
+
+### Improvement
+
+- [COOK-2547]: Add more options to tmux.conf template
+
 ## v1.2.2:
 
 The repository didn't have pushed commits, and so the following
