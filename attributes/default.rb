@@ -3,8 +3,8 @@ default['tmux']['install_method'] = if(node['platform_family'] == 'rhel')
 else
   'package'
 end
-default['tmux']['version'] = '1.6'
-default['tmux']['checksum'] = 'faee08ba1bd8c22537cd5b7458881d1bdb4985df88ed6bc5967c56881a7efbd6'
+default['tmux']['version'] = '1.8'
+default['tmux']['checksum'] = 'f265401ca890f8223e09149fcea5abcd6dfe75d597ab106e172b01e9d0c9cd44'
 
 default['tmux']['server_opts']['escape-time'] = 1
 
