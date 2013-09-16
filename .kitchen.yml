@@ -1,0 +1,33 @@
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: true
+  customize:
+    memory: 2048
+
+platforms:
+  - name: ubuntu-10.04
+    run_list:
+      - recipe[apt]
+  - name: ubuntu-12.04
+    run_list:
+      - recipe[apt]
+  - name: centos-5.9
+    run_list:
+      - recipe[yum::epel]
+  - name: centos-6.4
+    run_list:
+      - recipe[yum::epel
+
+suites:
+  - name: package
+    run_list:
+      - recipe[tmux::default]
+    attributes:
+      tmux:
+        install_method: package
+  - name: source
+    run_list:
+      - recipe[tmux::default]
+    attributes:
+      tmux:
+        install_method: source

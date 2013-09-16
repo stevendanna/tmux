@@ -2,7 +2,7 @@
 # Cookbook Name:: tmux
 # Recipe:: default
 #
-# Copyright 2010, Opscode, Inc.
+# Copyright 2010-2013, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,18 +16,23 @@
 # See the License for the specific language governing permissions and
 #
 
-case node['tmux']['install_method']
-when 'source'
-  include_recipe "tmux::source"
-else
-  include_recipe "tmux::package"
+begin
+  # Becomes include_recipe 'tmux::_packge'
+  # The recipe starts with an underscore because it's not meant to be used
+  # in a run_list (and should only be included by this recipe).
+  include_recipe "tmux::_#{node['tmux']['install_method']}"
+rescue Chef::Exceptions::RecipeNotFound
+  Chef::Application.fatal! "'#{node['tmux']['install_method']}' is not a valid installation method for the tmux cookbook!"
 end
 
 template '/etc/tmux.conf' do
   source 'tmux.conf.erb'
-  mode 00644
+  owner  'root'
+  group  'root'
+  mode   '0644'
   variables(
-    :server_opts => node['tmux']['server_opts'].to_hash,
+    :server_opts  => node['tmux']['server_opts'].to_hash,
     :session_opts => node['tmux']['session_opts'].to_hash,
-    :window_opts => node['tmux']['window_opts'].to_hash )
+    :window_opts  => node['tmux']['window_opts'].to_hash
+  )
 end
