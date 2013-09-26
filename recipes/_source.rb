@@ -41,7 +41,10 @@ bash 'install_tmux' do
   cwd  Chef::Config['file_cache_path']
   code <<-EOH
       tar -zxf #{tar_name}.tar.gz
-      (cd #{tar_name} && ./configure && make && make install)
+      cd #{tar_name}
+      ./configure #{node['tmux']['configure_options'].join(" ")}
+      make
+      make install
     EOH
   action :nothing
 end
