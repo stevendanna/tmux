@@ -3,6 +3,13 @@ tmux Cookbook CHANGELOG
 This file is used to list changes made in each version of the tmux cookbook.
 
 
+v1.4.0
+------
+### Improvement
+- **[COOK-3582](https://tickets.opscode.com/browse/COOK-3582)** - Add `install_prefix` and `configure_opts` attributes
+- **[COOK-3556](https://tickets.opscode.com/browse/COOK-3556)** - Add Test Kitchen 1.0, ChefSpec, Rubocop
+
+
 v1.3.2
 ------
 ### Improvement
