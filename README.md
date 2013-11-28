@@ -1,6 +1,6 @@
 tmux Cookbook
 =============
-[![Build Status](https://secure.travis-ci.org/opscode-cookbooks/tmux.png?branch=master)](http://travis-ci.org/opscode-cookbooks/tmux)
+[![Build Status](https://secure.travis-ci.org/stevendanna/tmux.png?branch=master)](http://travis-ci.org/stevendanna/tmux)
 
 Installs tmux, a terminal multiplexer.
 
