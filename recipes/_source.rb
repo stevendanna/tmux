@@ -42,7 +42,7 @@ bash 'install_tmux' do
   code <<-EOH
       tar -zxf #{tar_name}.tar.gz
       cd #{tar_name}
-      ./configure #{node['tmux']['configure_options'].join(" ")}
+      ./configure #{node['tmux']['configure_options'].join(' ')}
       make
       make install
     EOH
