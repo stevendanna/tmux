@@ -17,7 +17,7 @@
 #
 
 begin
-  # Becomes include_recipe 'tmux::_packge'
+  # Becomes include_recipe 'tmux::_package'
   # The recipe starts with an underscore because it's not meant to be used
   # in a run_list (and should only be included by this recipe).
   include_recipe "tmux::_#{node['tmux']['install_method']}"
