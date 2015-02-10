@@ -23,6 +23,7 @@ default['tmux']['install_method'] = case node['platform_family']
                                       'package'
                                     end
 
+default['tmux']['source_url'] = 'http://downloads.sourceforge.net/tmux'
 default['tmux']['version'] = '1.8'
 default['tmux']['checksum'] = 'f265401ca890f8223e09149fcea5abcd6dfe75d597ab106e172b01e9d0c9cd44'
 
