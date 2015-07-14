@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'tmux::default' do
   context 'when the installation method is source' do
     let(:chef_run) do
-      ChefSpec::ChefRunner.new do |node|
+      ChefSpec::SoloRunner.new do |node|
         node.set['tmux']['install_method'] = 'source'
       end.converge('tmux::default')
     end
@@ -19,7 +19,7 @@ describe 'tmux::default' do
 
   context 'when the installation method is package' do
     let(:chef_run) do
-      ChefSpec::ChefRunner.new do |node|
+      ChefSpec::SoloRunner.new do |node|
         node.set['tmux']['install_method'] = 'package'
       end.converge('tmux::default')
     end
@@ -34,7 +34,7 @@ describe 'tmux::default' do
   end
 
   context 'on RHEL' do
-    let(:chef_run) { ChefSpec::ChefRunner.new(platform: 'redhat', version: '6.3').converge('tmux::default') }
+    let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'redhat', version: '6.3').converge('tmux::default') }
 
     it 'sets the installation method to `source`'  do
       expect(chef_run.node['tmux']['install_method']).to eq('source')
@@ -42,7 +42,7 @@ describe 'tmux::default' do
   end
 
   context 'on debian' do
-    let(:chef_run) { ChefSpec::ChefRunner.new(platform: 'ubuntu', version: '12.04').converge('tmux::default') }
+    let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '12.04').converge('tmux::default') }
 
     it 'sets the installation method to `package`'  do
       expect(chef_run.node['tmux']['install_method']).to eq('package')
@@ -51,26 +51,26 @@ describe 'tmux::default' do
 
   context 'when the installation method is set to something invalid' do
     before do
-      Chef::Application.stub(:fatal!)
+      allow(Chef::Application).to receive(:fatal!).and_return(nil)
     end
 
     let(:chef_run) do
-      ChefSpec::ChefRunner.new do |node|
+      ChefSpec::SoloRunner.new do |node|
         node.set['tmux']['install_method'] = 'not_real'
       end
     end
 
     it 'exits fatally' do
-      Chef::Application.should_receive(:fatal!).once
+      expect(Chef::Application).to receive(:fatal!).once
       chef_run.converge('tmux::default')
     end
   end
 
   context 'usual business' do
-    let(:chef_run) { ChefSpec::ChefRunner.new(platform: 'ubuntu', version: '12.04').converge('tmux::default') }
+    let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '12.04').converge('tmux::default') }
 
     it 'creates the tmux conf' do
-      expect(chef_run).to create_file('/etc/tmux.conf')
+      expect(chef_run).to create_template('/etc/tmux.conf')
     end
 
     it 'writes the correct content' do
