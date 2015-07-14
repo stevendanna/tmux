@@ -27,9 +27,9 @@ end
 
 template '/etc/tmux.conf' do
   source 'tmux.conf.erb'
-  owner  'root'
-  group  'root'
-  mode   '0644'
+  owner 'root'
+  group 'root'
+  mode '0644'
   variables(
     :server_opts  => node['tmux']['server_opts'].to_hash,
     :session_opts => node['tmux']['session_opts'].to_hash,

@@ -31,14 +31,14 @@ end
 
 tar_name = "tmux-#{node['tmux']['version']}"
 remote_file "#{Chef::Config['file_cache_path']}/#{tar_name}.tar.gz" do
-  source   "#{node['tmux']['source_url']}/#{tar_name}.tar.gz"
+  source "#{node['tmux']['source_url']}/#{tar_name}.tar.gz"
   checksum node['tmux']['checksum']
   notifies :run, 'bash[install_tmux]', :immediately
 end
 
 bash 'install_tmux' do
   user 'root'
-  cwd  Chef::Config['file_cache_path']
+  cwd Chef::Config['file_cache_path']
   code <<-EOH
       tar -zxf #{tar_name}.tar.gz
       cd #{tar_name}
