@@ -29,9 +29,8 @@ packages.each do |name|
   package name
 end
 
-tar_name = "tmux-#{node['tmux']['version']}"
 remote_file "#{Chef::Config['file_cache_path']}/#{tar_name}.tar.gz" do
-  source "#{node['tmux']['source_url']}/#{tar_name}.tar.gz"
+  source node['tmux']['source_url'] % {:version => node['tmux']['version']}
   checksum node['tmux']['checksum']
   notifies :run, 'bash[install_tmux]', :immediately
 end
