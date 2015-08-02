@@ -23,12 +23,11 @@ Once installed, you must install the `vagrant-berkshelf` plugin:
 
     $ vagrant plugin install vagrant-berkshelf
 
-
 Development
 -----------
 1. Clone the git repository from GitHub:
 
-        $ git clone git@github.com:opscode-cookbooks/COOKBOOK.git
+        $ git clone https://github.com/stevendanna/tmux.git
 
 2. Install the dependencies using bundler:
 
@@ -47,7 +46,3 @@ Development
     - `bundle exec kitchen test`
 
 7. Assuming the tests pass, open a Pull Request on GitHub
-8. Open a JIRA ticket for this compontent, linking the JIRA ticket to the Pull Request and visa versa.
-9. Mark the JIRA ticket as "Fix Provided"
-
-For more information, see [Opscode's Contribution Guidelines](https://wiki.opscode.com/display/chef/How+to+Contribute).
