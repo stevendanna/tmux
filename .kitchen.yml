@@ -11,7 +11,7 @@ platforms:
   - name: ubuntu-12.04
     run_list:
       - recipe[apt]
-  - name: centos-5.9
+  - name: centos-5.11
   - name: centos-6.4
 
 suites:
