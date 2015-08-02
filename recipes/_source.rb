@@ -29,8 +29,10 @@ packages.each do |name|
   package name
 end
 
-remote_file "#{Chef::Config['file_cache_path']}/#{tar_name}.tar.gz" do
-  source node['tmux']['source_url'] % {:version => node['tmux']['version']}
+source_url = node['tmux']['source_url'] % { :version => node['tmux']['version'] }
+file_name = source_url.split("/").last
+remote_file "#{Chef::Config['file_cache_path']}/#{file_name}" do
+  source source_url
   checksum node['tmux']['checksum']
   notifies :run, 'bash[install_tmux]', :immediately
 end
@@ -39,8 +41,8 @@ bash 'install_tmux' do
   user 'root'
   cwd Chef::Config['file_cache_path']
   code <<-EOH
-      tar -zxf #{tar_name}.tar.gz
-      cd #{tar_name}
+      tar -zxf #{file_name}
+      cd #{file_name.gsub(/\.tar\.gz/, "")}
       ./configure #{node['tmux']['configure_options'].join(' ')}
       make
       make install
