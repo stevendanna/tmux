@@ -1,7 +1,19 @@
 tmux Cookbook CHANGELOG
 =======================
-This file is used to list changes made in each version of the tmux cookbook.
+This file is used to list changes made in each version of the tmux
+cookbook.
 
+v1.5.0
+------
+
+### Improvements
+
+- Adds source_url attribute to control tmux source url
+- Dynamically choose source installation version based on platform
+- Change default source from sourceforge to tmux
+- Fix rubocop offenses and update test dependencies
+
+Thanks to Bernhard Kohler and Greg Karékinian.
 
 v1.4.0
 ------
