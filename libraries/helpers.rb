@@ -1,9 +1,12 @@
 module TmuxCookbook
   module Helpers
-    LATEST_VERSION='2.0'
-    LATEST_CHECKSUM='795f4b4446b0ea968b9201c25e8c1ef8a6ade710ebca4657dd879c35916ad362'
-    FALLBACK_VERSION='1.6'
-    FALLBACK_CHECKSUM='faee08ba1bd8c22537cd5b7458881d1bdb4985df88ed6bc5967c56881a7efbd6'
+
+    unless defined?(LATEST_VERSION) #prevent warnings about redefining constants
+      LATEST_VERSION='2.0'
+      LATEST_CHECKSUM='795f4b4446b0ea968b9201c25e8c1ef8a6ade710ebca4657dd879c35916ad362'
+      FALLBACK_VERSION='1.6'
+      FALLBACK_CHECKSUM='faee08ba1bd8c22537cd5b7458881d1bdb4985df88ed6bc5967c56881a7efbd6'
+    end
 
     def self.auto_version(node)
       if libevent2_available?(node)
