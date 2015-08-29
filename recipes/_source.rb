@@ -30,7 +30,7 @@ packages.each do |name|
 end
 
 source_url = node['tmux']['source_url'] % { :version => node['tmux']['version'] }
-file_name = source_url.split("/").last
+file_name = source_url.split('/').last
 remote_file "#{Chef::Config['file_cache_path']}/#{file_name}" do
   source source_url
   checksum node['tmux']['checksum']
@@ -42,7 +42,7 @@ bash 'install_tmux' do
   cwd Chef::Config['file_cache_path']
   code <<-EOH
       tar -zxf #{file_name}
-      cd #{file_name.gsub(/\.tar\.gz/, "")}
+      cd #{file_name.gsub(/\.tar\.gz/, '')}
       ./configure #{node['tmux']['configure_options'].join(' ')}
       make
       make install
