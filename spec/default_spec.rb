@@ -36,7 +36,7 @@ describe 'tmux::default' do
   context 'on RHEL' do
     let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'redhat', version: '6.3').converge('tmux::default') }
 
-    it 'sets the installation method to `source`'  do
+    it 'sets the installation method to `source`' do
       expect(chef_run.node['tmux']['install_method']).to eq('source')
     end
   end
@@ -44,7 +44,7 @@ describe 'tmux::default' do
   context 'on debian' do
     let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '12.04').converge('tmux::default') }
 
-    it 'sets the installation method to `package`'  do
+    it 'sets the installation method to `package`' do
       expect(chef_run.node['tmux']['install_method']).to eq('package')
     end
   end
