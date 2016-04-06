@@ -45,7 +45,7 @@ Once installed, you must install the `vagrant-berkshelf` plugin:
 ## Development Workflow
 1. Clone the git repository from GitHub:
 
-        $ git clone git@github.com:stevendanna/logrotate.git
+        $ git clone git@github.com:stevendanna/tmux.git
 
 2. Install the dependencies using bundler:
 
